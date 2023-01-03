@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise2</title>
+  </head>
+  <body>
+    <script>
+      function performTask(name, callback) {
+        console.log(`'${name}' in progress!`);
+        setTimeout(() => {
+          console.log(`Done performing '${name}!'`);
+          callback();
+        }, 1000 * Math.random());
+      }
+
+      function task(name) {
+        return () =>
+          new Promise((resolve) => {
+            performTask(name, resolve);
+          });
+      }
+
+      (async () => {
+        const task1 = task("add sugar");
+        const task2 = task("add spice");
+        const task3 = task("add everything nice");
+        const task4 = task("add everything nice");
+
+        await task1();
+        await task2();
+        await task3();
+        await task4();
+
+        console.log("Created Powerpuff Girls!");
+      })();
+    </script>
+  </body>
+</html>

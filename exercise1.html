@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise1</title>
+  </head>
+  <body>
+    <script>
+      function task(name) {
+        const performTask = () => {
+          const task = new Promise((resolve) => {
+            resolve(console.log(`'${name}' in progress!`));
+          });
+          task.then(() => {
+            console.log(`Done performing '${name}!'`);
+          });
+        };
+        return performTask;
+      }
+
+      (async () => {
+        const task1 = task("add sugar");
+        const task2 = task("add spice");
+        const task3 = task("add everything nice");
+        const task4 = task("add chemical X");
+
+        await task1();
+        await task2();
+        await task3();
+        await task4();
+
+        console.log("Created Powerpuff Girls!");
+      })();
+    </script>
+  </body>
+</html>
